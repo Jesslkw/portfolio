@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Light: ice blue (#f0f7ff family) + electric blue accent (#2563eb)
+  Dark: near-black + deep blue + sky accent (#60a5fa)
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-secondary: #6366f1;
+  --card: rgb(255 255 255 / 0.72);
+  --border: rgb(15 23 42 / 0.1);
+  --veil: rgb(255 255 255 / 0.38);
+  --veil-fallback: rgb(248 250 252 / 0.92);
+}
+
+.dark {
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #60a5fa;
+  --accent-secondary: #818cf8;
+  --card: rgb(15 23 42 / 0.58);
+  --border: rgb(148 163 184 / 0.16);
+  --veil: rgb(2 6 23 / 0.52);
+  --veil-fallback: rgb(2 6 23 / 0.94);
 }
 
 @theme inline {
-  --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  transition: color 0.35s ease;
+}
+
+/* Soft grain — neutral, low contrast */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0.035;
+  transition: opacity 0.35s ease;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.dark .grain {
+  opacity: 0.045;
+}
+
+@keyframes backdrop-blob-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, 8%) scale(1.06);
+  }
+}
+
+@keyframes backdrop-blob-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.03);
+  }
+  50% {
+    transform: translate(-7%, 5%) scale(0.99);
+  }
+}
+
+@keyframes backdrop-blob-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.04);
+  }
+  66% {
+    transform: translate(-5%, 3%) scale(0.98);
+  }
+}
+
+.dynamic-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Layered mesh gradient + base tone */
+.dynamic-backdrop__base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 130% 85% at 0% 0%,
+      rgb(191 219 254 / 0.85),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 100% 75% at 100% 5%,
+      rgb(199 210 254 / 0.65),
+      transparent 52%
+    ),
+    linear-gradient(168deg, #f8fafc 0%, #eef4ff 38%, #e0edfc 72%, #dbeafe 100%);
+}
+
+.dark .dynamic-backdrop__base {
+  background:
+    radial-gradient(
+      ellipse 125% 90% at 12% -5%,
+      rgb(37 99 235 / 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 95% 70% at 100% 25%,
+      rgb(59 130 246 / 0.18),
+      transparent 50%
+    ),
+    linear-gradient(165deg, #020617 0%, #0a1628 42%, #0f172a 78%, #020617 100%);
+}
+
+.dynamic-backdrop__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.dynamic-backdrop__blob--1 {
+  width: min(115vw, 36rem);
+  height: min(115vw, 36rem);
+  top: -14%;
+  left: -16%;
+  background: radial-gradient(
+    circle at 42% 38%,
+    rgb(59 130 246 / 0.38),
+    rgb(147 197 253 / 0.2) 44%,
+    transparent 68%
+  );
+  animation: backdrop-blob-a 24s ease-in-out infinite;
+}
+
+.dynamic-backdrop__blob--2 {
+  width: min(95vw, 30rem);
+  height: min(95vw, 30rem);
+  bottom: -18%;
+  right: -14%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(99 102 241 / 0.32),
+    rgb(165 180 252 / 0.16) 48%,
+    transparent 70%
+  );
+  animation: backdrop-blob-b 30s ease-in-out infinite;
+}
+
+.dynamic-backdrop__blob--3 {
+  width: min(88vw, 26rem);
+  height: min(88vw, 26rem);
+  top: 36%;
+  right: -6%;
+  background: radial-gradient(
+    circle at 48% 52%,
+    rgb(125 211 252 / 0.28),
+    rgb(224 242 254 / 0.14) 46%,
+    transparent 66%
+  );
+  animation: backdrop-blob-c 19s ease-in-out infinite;
+}
+
+.dark .dynamic-backdrop__blob--1 {
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgb(37 99 235 / 0.55),
+    rgb(30 64 175 / 0.22) 46%,
+    transparent 72%
+  );
+}
+
+.dark .dynamic-backdrop__blob--2 {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(59 130 246 / 0.28),
+    rgb(15 23 42 / 0.5) 52%,
+    transparent 74%
+  );
+}
+
+.dark .dynamic-backdrop__blob--3 {
+  background: radial-gradient(
+    circle at 45% 55%,
+    rgb(96 165 250 / 0.22),
+    rgb(30 58 138 / 0.18) 50%,
+    transparent 70%
+  );
+}
+
+.dynamic-backdrop__veil {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0);
+  background: var(--veil);
+  -webkit-backdrop-filter: blur(28px) saturate(1.08);
+  backdrop-filter: blur(28px) saturate(1.08);
+}
+
+.dark .dynamic-backdrop__veil {
+  -webkit-backdrop-filter: blur(32px) saturate(1.05);
+  backdrop-filter: blur(32px) saturate(1.05);
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .dynamic-backdrop__veil {
+    background: var(--veil-fallback);
+  }
+}
+
+@media (max-width: 639px) {
+  .dynamic-backdrop__blob {
+    filter: blur(48px);
+  }
+
+  .dynamic-backdrop__veil {
+    -webkit-backdrop-filter: blur(18px) saturate(1.05);
+    backdrop-filter: blur(18px) saturate(1.05);
+  }
+
+  .dark .dynamic-backdrop__veil {
+    -webkit-backdrop-filter: blur(20px) saturate(1.03);
+    backdrop-filter: blur(20px) saturate(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dynamic-backdrop__blob--1,
+  .dynamic-backdrop__blob--2,
+  .dynamic-backdrop__blob--3 {
+    animation: none;
+  }
 }
