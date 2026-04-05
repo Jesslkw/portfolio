@@ -49,7 +49,11 @@ function formatPoint(text: string) {
 
 export function ExperienceRoadmap() {
   return (
-    <section className="mt-12 sm:mt-14" aria-labelledby="experience-heading">
+    <section
+      id="experience"
+      className="mt-12 scroll-mt-24 sm:mt-14"
+      aria-labelledby="experience-heading"
+    >
       <h2
         id="experience-heading"
         className="text-xs font-semibold uppercase tracking-[0.25em] text-muted"

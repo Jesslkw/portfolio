@@ -29,7 +29,10 @@ export function ChillBlobSection() {
   const isMoon = mounted && resolvedTheme === "dark";
 
   return (
-    <div className="mt-12 motion-reduce:hidden">
+    <div
+      id="scene"
+      className="mt-12 scroll-mt-24 motion-reduce:hidden"
+    >
       <ChillBlob mode={mode} />
       {!mounted || !resolvedTheme ? (
         <p className="mt-3 h-10 px-1 sm:px-0" aria-hidden />

@@ -10,6 +10,7 @@ type FadeInProps = {
   /** Seconds; keep small */
   delay?: number;
   as?: "div" | "section" | "footer";
+  id?: string;
 };
 
 export function FadeIn({
@@ -17,12 +18,14 @@ export function FadeIn({
   className,
   delay = 0,
   as = "div",
+  id,
 }: FadeInProps) {
   const reduceMotion = useReducedMotion();
   const duration = reduceMotion ? 0 : 0.82;
   const d = reduceMotion ? 0 : delay;
 
   const props = {
+    id,
     className,
     initial: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 18 },
     whileInView: { opacity: 1, y: 0 },

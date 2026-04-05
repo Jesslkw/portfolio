@@ -10,10 +10,12 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { ChillBlobSection } from "@/components/ChillBlobSection";
+import { SiteNav } from "@/components/SiteNav";
 import { ExperienceRoadmap } from "@/components/ExperienceRoadmap";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import { SmartGoalsSection } from "@/components/SmartGoalsSection";
 import { FadeIn } from "@/components/FadeIn";
 import { HeroIntro } from "@/components/HeroIntro";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const SKILLS: {
   name: string;
@@ -64,11 +66,14 @@ export default function Portfolio() {
       </div>
       <div className="grain" aria-hidden />
 
-      <main className="relative z-10 mx-auto max-w-3xl px-4 pb-20 pt-12 sm:px-5 sm:pb-24 sm:pt-14 md:px-8 md:pt-20">
-        <FadeIn className="flex items-start justify-end pr-[max(0px,env(safe-area-inset-right))] pt-[max(0px,env(safe-area-inset-top))]">
-          <ThemeToggle />
-        </FadeIn>
+      <SiteNav />
 
+      <main className="relative z-10 mx-auto max-w-3xl px-4 pb-20 pt-5 sm:px-5 sm:pb-24 sm:pt-6 md:px-8 md:pt-8">
+        <div
+          id="top"
+          className="scroll-mt-24 outline-none"
+          tabIndex={-1}
+        >
         <FadeIn delay={0.1}>
           <HeroIntro>
             <p className="text-sm font-medium tracking-wide text-accent">
@@ -91,8 +96,12 @@ export default function Portfolio() {
             </div>
           </HeroIntro>
         </FadeIn>
+        </div>
 
-        <FadeIn className="mt-9 w-full text-left sm:mt-10">
+        <FadeIn
+          id="about"
+          className="mt-9 w-full scroll-mt-24 text-left sm:mt-10"
+        >
           <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
             About me
           </h2>
@@ -110,7 +119,11 @@ export default function Portfolio() {
           <ChillBlobSection />
         </FadeIn>
 
-        <FadeIn as="section" className="mt-12 sm:mt-14">
+        <FadeIn
+          as="section"
+          id="skills"
+          className="mt-12 scroll-mt-24 sm:mt-14"
+        >
           <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
             Proficiencies
           </h2>
@@ -134,7 +147,19 @@ export default function Portfolio() {
           <ExperienceRoadmap />
         </FadeIn>
 
-        <FadeIn as="section" className="mt-12 sm:mt-14">
+        <FadeIn as="section">
+          <ProjectsSection />
+        </FadeIn>
+
+        <FadeIn as="section">
+          <SmartGoalsSection />
+        </FadeIn>
+
+        <FadeIn
+          as="section"
+          id="connect"
+          className="mt-12 scroll-mt-24 sm:mt-14"
+        >
           <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
             Connect with me
           </h2>
