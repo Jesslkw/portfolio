@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
       "Packaged the application into a stand-alone Windows executable, enabling easy distribution without Python installation.",
     ],
     reflection:
-      "The hardest part wasn't the game logic — it was understanding how to run a game loop without freezing the UI. Tkinter is single-threaded, so I had to use the after() method to schedule updates instead of a blocking while loop. That constraint forced me to think about timing and state differently than I had before. Packaging the executable also taught me something I hadn't expected: software doesn't exist in isolation. Dependencies, the user's environment, and distribution all matter as much as the code itself.",
+      "The hardest part wasn't the game logic; it was understanding how to run a game loop without freezing the UI. Tkinter is single-threaded, so I had to use the after() method to schedule updates instead of a blocking while loop. That constraint forced me to think about timing and state differently than I had before. Packaging the executable also taught me something I hadn't expected: software doesn't exist in isolation. Dependencies, the user's environment, and distribution all matter as much as the code itself.",
   },
   {
     title: "Stopwatch",
@@ -42,7 +42,7 @@ const PROJECTS: Project[] = [
       "Deepened understanding of how React re-renders work and why controlled state matters for predictable UI behaviour.",
     ],
     reflection:
-      "This project looked trivial on paper, which made the surprises more instructive. The first version had a memory leak — I wasn't clearing the interval when the component unmounted. Fixing it made useEffect's cleanup function click in a way that reading about it never did. It also made me think about the gap between 'the UI looks right' and 'the code is correct.' Both versions appeared identical to the user, but one was leaking resources. That distinction — correct behaviour vs. correct implementation — is something I now look for deliberately.",
+      "This project looked trivial on paper, which made the surprises more instructive. The first version had a memory leak: I wasn't clearing the interval when the component unmounted. Fixing it made useEffect's cleanup function click in a way that reading about it never did. It also made me think about the gap between 'the UI looks right' and 'the code is correct.' Both versions appeared identical to the user, but one was leaking resources. That distinction (correct behaviour vs. correct implementation) is something I now look for deliberately.",
   },
   {
     title: "Résumé & Job Description Matcher",
@@ -57,7 +57,7 @@ const PROJECTS: Project[] = [
       "Designed the full request-response cycle end-to-end, from file ingestion to rendered results.",
     ],
     reflection:
-      "This was the first project where I had to think seriously about failure. API calls time out, PDFs have inconsistent encoding, and users don't behave the way you expect. My first instinct was to assume the happy path and add error handling later — which is exactly backwards. The other challenge was prompt engineering: getting the model to return consistently structured output took more iteration than I expected. I learned that working with AI APIs isn't just about calling an endpoint; it's about treating the model's output as untrusted and designing around its unpredictability. That mindset shift felt like a step toward thinking like an engineer rather than just a developer.",
+      "This was the first project where I had to think seriously about failure. API calls time out, PDFs have inconsistent encoding, and users don't behave the way you expect. My first instinct was to assume the happy path and add error handling later, which is exactly backwards. The other challenge was prompt engineering: getting the model to return consistently structured output took more iteration than I expected. I learned that working with AI APIs isn't just about calling an endpoint; it's about treating the model's output as untrusted and designing around its unpredictability. That mindset shift felt like a step toward thinking like an engineer rather than just a developer.",
   },
 ];
 
@@ -75,7 +75,7 @@ export function ProjectsSection() {
         Projects
       </h2>
       <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
-        A few things I&apos;ve built — and what each one actually taught me.
+        A few things I&apos;ve built, and what each one actually taught me.
       </p>
 
       <ul className="mt-8 space-y-6">

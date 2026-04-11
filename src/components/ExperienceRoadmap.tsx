@@ -3,7 +3,7 @@ import { Briefcase, Users } from "lucide-react";
 const milestones = [
   {
     id: "assistiq",
-    period: "Jan 2026 — present",
+    period: "Jan 2026 · present",
     title: "Support Analyst Intern",
     org: "AssistIQ",
     orgClass: "text-accent",
@@ -17,7 +17,7 @@ const milestones = [
       "Keep scenarios and outcomes **documented** so the team shares a clear picture of what was validated and what still needs attention.",
     ],
     reflection:
-      "This role shifted how I think about software quality. Before, I assumed testing was about finding bugs. Working here, I realised it is really about building confidence — giving the team a foundation to move fast without breaking things silently. The most useful thing I learned wasn’t a tool or a framework; it was learning to ask ‘what would have to be true for this to fail?’ before writing a test. Exposure to data ingestion pipelines also gave me a clearer picture of how data moves through a real system, which made abstract concepts from class feel much more concrete.",
+      "This role shifted how I think about software quality. Before, I assumed testing was about finding bugs. Working here, I realised it is really about building confidence: giving the team a foundation to move fast without breaking things silently. The most useful thing I learned wasn’t a tool or a framework; it was learning to ask ‘what would have to be true for this to fail?’ before writing a test. Exposure to data ingestion pipelines also gave me a clearer picture of how data moves through a real system, which made abstract concepts from class feel much more concrete.",
   },
   {
     id: "hackathon",
@@ -34,7 +34,7 @@ const milestones = [
       "Helped the group stay coordinated under time pressure and deliver a coherent demo that reflected **everyone’s contributions**.",
     ],
     reflection:
-      "Twenty-four hours forces a kind of clarity that normal projects don’t. You can’t build everything, so the team has to agree quickly on what actually matters — and live with that decision. The hardest moment wasn’t technical; it was convincing the group to cut a feature we’d already started building because it was pulling focus. That decision made the final demo stronger. It taught me that good engineering judgment isn’t just about what you build — it’s also about what you choose not to.",
+      "Twenty-four hours forces a kind of clarity that normal projects don’t. You can’t build everything, so the team has to agree quickly on what actually matters, and live with that decision. The hardest moment wasn’t technical; it was convincing the group to cut a feature we’d already started building because it was pulling focus. That decision made the final demo stronger. It taught me that good engineering judgment isn’t just about what you build; it’s also about what you choose not to.",
   },
 ] as const;
 
@@ -54,7 +54,7 @@ export function ExperienceRoadmap() {
       </h2>
 
       <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-muted">
-        Roles and milestones so far—a quick roadmap from internship work to
+        Roles and milestones so far, a quick roadmap from internship work to
         hackathon teamwork.
       </p>
 

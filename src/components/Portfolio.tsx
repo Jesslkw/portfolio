@@ -107,7 +107,7 @@ export default function Portfolio() {
           </h2>
           <div className="mt-3 space-y-3 text-[15px] leading-[1.65] text-muted sm:leading-relaxed">
             <p>
-              I grew up in Mauritius — a small island where switching between
+              I grew up in Mauritius, a small island where switching between
               languages and cultures is just Tuesday. That environment pushed me
               to think carefully about how I communicate and how I read a room,
               skills that translate surprisingly well to writing software that
@@ -115,11 +115,11 @@ export default function Portfolio() {
             </p>
             <p>
               I came to Computer Science through a slow realisation: I&apos;ve
-              always been drawn to understanding how things are structured —
+              always been drawn to understanding how things are structured,
               whether that&apos;s a film&apos;s narrative or a system&apos;s
               architecture. My brother Jo&apos;s path through software
               engineering showed me early on that the gap between a beginner and
-              a competent engineer isn&apos;t talent — it&apos;s the willingness
+              a competent engineer isn&apos;t talent; it&apos;s the willingness
               to keep showing up. That stuck with me.
             </p>
             <p>
@@ -127,7 +127,7 @@ export default function Portfolio() {
               the frontend, Express when I need a backend, Three.js when I want
               to push something visual. The projects here are small, but each one
               taught me something I couldn&apos;t have learned from a lecture
-              alone — usually something I got wrong first.
+              alone, usually something I got wrong first.
             </p>
           </div>
         </FadeIn>
@@ -196,18 +196,18 @@ export default function Portfolio() {
               Working at AssistIQ gave this a name for me: the systems that
               matter most are the ones people never have to think about. When
               product data is off, a clinician wastes time on something that
-              shouldn&apos;t require their attention. That friction — small,
-              seemingly minor — accumulates and affects real decisions. It made
+              shouldn&apos;t require their attention. That friction (small,
+              seemingly minor) accumulates and affects real decisions. It made
               me think differently about what &ldquo;good software&rdquo;
               actually means.
             </p>
             <p>
               My long-term goal is to build systems that reduce that kind of
-              friction — not by adding features, but by making the right
+              friction, not by adding features, but by making the right
               behaviour feel obvious. Healthcare and critical operations interest
               me most because the stakes are honest: reliability isn&apos;t a
               nice-to-have, it&apos;s the product. A UI that confuses someone in a high-pressure environment, or a
-              pipeline that silently corrupts data, isn&apos;t just a bug —
+              pipeline that silently corrupts data, isn&apos;t just a bug;
               it&apos;s a failure with real consequences. That pressure clarifies
               what matters.
             </p>
@@ -215,7 +215,7 @@ export default function Portfolio() {
               What I keep returning to is the tension between complexity and
               simplicity. The systems I admire most are the ones where enormous
               complexity runs underneath, but the person using them doesn&apos;t
-              need to know. Like a well-designed control panel — not because it
+              need to know. Like a well-designed control panel, not because it
               hides things, but because it presents exactly what the user needs
               to act confidently. Getting that balance right requires
               understanding the user&apos;s context as deeply as the technical
@@ -223,7 +223,7 @@ export default function Portfolio() {
             </p>
             <p>
               I&apos;m early in this path. Most of what I&apos;ve built so far
-              is small — a game, a stopwatch, a Flask tool. But each one asked a
+              is small: a game, a stopwatch, a Flask tool. But each one asked a
               version of the same question: what does the person on the other end
               actually need? Holding onto that question, even in small projects,
               feels like the right foundation for the engineering I want to do.
@@ -249,7 +249,7 @@ export default function Portfolio() {
             <iframe
               src="/JessieLKW_Resume.pdf"
               className="h-[700px] w-full"
-              title="Jessie Li Kam Wa — Résumé"
+              title="Jessie Li Kam Wa · Résumé"
             />
           </div>
           <div className="mt-4 flex justify-end">
