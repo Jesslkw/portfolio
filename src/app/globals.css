@@ -246,10 +246,39 @@ body {
   }
 }
 
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient-name {
+  background: linear-gradient(
+    270deg,
+    #2563eb,
+    #6366f1,
+    #60a5fa,
+    #a78bfa,
+    #2563eb
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dynamic-backdrop__blob--1,
   .dynamic-backdrop__blob--2,
   .dynamic-backdrop__blob--3 {
     animation: none;
+  }
+
+  .animated-gradient-name {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: var(--foreground);
+    color: var(--foreground);
   }
 }

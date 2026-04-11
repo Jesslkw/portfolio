@@ -16,6 +16,7 @@ import { ProjectsSection } from "@/components/ProjectsSection";
 import { SmartGoalsSection } from "@/components/SmartGoalsSection";
 import { FadeIn } from "@/components/FadeIn";
 import { HeroIntro } from "@/components/HeroIntro";
+import { HeroText } from "@/components/HeroText";
 
 const SKILLS: {
   name: string;
@@ -76,12 +77,7 @@ export default function Portfolio() {
         >
         <FadeIn delay={0.1}>
           <HeroIntro>
-            <p className="text-sm font-medium tracking-wide text-accent">
-              Hello, I&apos;m
-            </p>
-            <h1 className="mt-2 text-[clamp(1.5rem,6vw+0.5rem,3rem)] font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl sm:leading-tight md:text-5xl">
-              Jessie Li Kam Wa
-            </h1>
+            <HeroText />
 
             <div className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-muted sm:mx-0">
               <p>
