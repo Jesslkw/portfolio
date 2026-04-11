@@ -108,30 +108,46 @@ body {
   background:
     radial-gradient(
       ellipse 130% 85% at 0% 0%,
-      rgb(191 219 254 / 0.45),
+      rgb(191 219 254 / 0.5),
       transparent 58%
     ),
     radial-gradient(
       ellipse 100% 75% at 100% 5%,
-      rgb(199 210 254 / 0.35),
+      rgb(199 210 254 / 0.4),
       transparent 52%
     ),
     linear-gradient(168deg, #f4f4f0 0%, #ecedf4 38%, #e3e8f0 72%, #d8e4ee 100%);
+}
+
+/* Subtle dot grid overlay — light mode */
+.dynamic-backdrop__base::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(37 99 235 / 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
 .dark .dynamic-backdrop__base {
   background:
     radial-gradient(
       ellipse 125% 90% at 12% -5%,
-      rgb(37 99 235 / 0.35),
+      rgb(37 99 235 / 0.4),
       transparent 55%
     ),
     radial-gradient(
       ellipse 95% 70% at 100% 25%,
-      rgb(59 130 246 / 0.18),
+      rgb(59 130 246 / 0.22),
       transparent 50%
     ),
     linear-gradient(165deg, #020617 0%, #0a1628 42%, #0f172a 78%, #020617 100%);
+}
+
+/* Subtle dot grid overlay — dark mode */
+.dark .dynamic-backdrop__base::after {
+  background-image: radial-gradient(circle, rgb(96 165 250 / 0.07) 1px, transparent 1px);
 }
 
 .dynamic-backdrop__blob {
@@ -148,8 +164,8 @@ body {
   left: -16%;
   background: radial-gradient(
     circle at 42% 38%,
-    rgb(59 130 246 / 0.18),
-    rgb(147 197 253 / 0.09) 44%,
+    rgb(59 130 246 / 0.26),
+    rgb(147 197 253 / 0.12) 44%,
     transparent 68%
   );
   animation: backdrop-blob-a 24s ease-in-out infinite;
@@ -162,8 +178,8 @@ body {
   right: -14%;
   background: radial-gradient(
     circle at 50% 50%,
-    rgb(99 102 241 / 0.14),
-    rgb(165 180 252 / 0.07) 48%,
+    rgb(99 102 241 / 0.2),
+    rgb(165 180 252 / 0.1) 48%,
     transparent 70%
   );
   animation: backdrop-blob-b 30s ease-in-out infinite;
@@ -176,8 +192,8 @@ body {
   right: -6%;
   background: radial-gradient(
     circle at 48% 52%,
-    rgb(125 211 252 / 0.12),
-    rgb(224 242 254 / 0.06) 46%,
+    rgb(125 211 252 / 0.18),
+    rgb(224 242 254 / 0.08) 46%,
     transparent 66%
   );
   animation: backdrop-blob-c 19s ease-in-out infinite;

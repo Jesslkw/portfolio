@@ -1,14 +1,5 @@
 import { Mail } from "lucide-react";
-import type { IconType } from "react-icons";
 import { FaLinkedinIn } from "react-icons/fa";
-import {
-  SiExpress,
-  SiNextdotjs,
-  SiPython,
-  SiReact,
-  SiThreedotjs,
-  SiTypescript,
-} from "react-icons/si";
 import { ChillBlobSection } from "@/components/ChillBlobSection";
 import { SiteNav } from "@/components/SiteNav";
 import { ExperienceRoadmap } from "@/components/ExperienceRoadmap";
@@ -17,43 +8,7 @@ import { SmartGoalsSection } from "@/components/SmartGoalsSection";
 import { FadeIn } from "@/components/FadeIn";
 import { HeroIntro } from "@/components/HeroIntro";
 import { HeroText } from "@/components/HeroText";
-
-const SKILLS: {
-  name: string;
-  Icon: IconType;
-  iconClass: string;
-}[] = [
-  {
-    name: "Three.js",
-    Icon: SiThreedotjs,
-    iconClass: "text-slate-900 dark:text-white",
-  },
-  {
-    name: "TypeScript",
-    Icon: SiTypescript,
-    iconClass: "text-[#3178C6]",
-  },
-  {
-    name: "Python",
-    Icon: SiPython,
-    iconClass: "text-[#3776AB]",
-  },
-  {
-    name: "Next.js",
-    Icon: SiNextdotjs,
-    iconClass: "text-slate-900 dark:text-white",
-  },
-  {
-    name: "React",
-    Icon: SiReact,
-    iconClass: "text-[#61DAFB]",
-  },
-  {
-    name: "Express",
-    Icon: SiExpress,
-    iconClass: "text-slate-700 dark:text-slate-300",
-  },
-];
+import { SkillsList } from "@/components/SkillPill";
 
 export default function Portfolio() {
   return (
@@ -142,20 +97,7 @@ export default function Portfolio() {
           <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">
             Proficiencies
           </h2>
-          <ul className="mt-4 flex flex-wrap gap-2 sm:mt-5">
-            {SKILLS.map(({ name, Icon, iconClass }) => (
-              <li key={name} className="min-w-0">
-                <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-[13px] text-foreground shadow-sm shadow-slate-900/5 backdrop-blur-sm transition-colors duration-300 sm:gap-2.5 sm:px-3.5 sm:py-2 sm:text-sm dark:shadow-black/40">
-                  <Icon
-                    className={`shrink-0 ${iconClass}`}
-                    size={18}
-                    aria-hidden
-                  />
-                  {name}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <SkillsList />
         </FadeIn>
 
         <div className="my-10 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" aria-hidden />
