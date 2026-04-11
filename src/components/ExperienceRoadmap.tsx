@@ -1,4 +1,4 @@
-import { Briefcase, FlaskConical, Users } from "lucide-react";
+import { Briefcase, Users } from "lucide-react";
 
 const milestones = [
   {
@@ -16,6 +16,8 @@ const milestones = [
       "Partner with engineering to clarify requirements, reproduce issues, and grow **test coverage** where risk is highest.",
       "Keep scenarios and outcomes **documented** so the team shares a clear picture of what was validated and what still needs attention.",
     ],
+    reflection:
+      "This role shifted how I think about software quality. Before, I assumed testing was about finding bugs. Working here, I realised it is really about building confidence — giving the team a foundation to move fast without breaking things silently. The most useful thing I learned wasn’t a tool or a framework; it was learning to ask ‘what would have to be true for this to fail?’ before writing a test. Exposure to data ingestion pipelines also gave me a clearer picture of how data moves through a real system, which made abstract concepts from class feel much more concrete.",
   },
   {
     id: "hackathon",
@@ -31,21 +33,11 @@ const milestones = [
       "Practiced **clear, steady communication**: dividing tasks fairly, surfacing blockers early, and **checking in** so nobody was stuck working in the dark.",
       "Helped the group stay coordinated under time pressure and deliver a coherent demo that reflected **everyone’s contributions**.",
     ],
+    reflection:
+      "Twenty-four hours forces a kind of clarity that normal projects don’t. You can’t build everything, so the team has to agree quickly on what actually matters — and live with that decision. The hardest moment wasn’t technical; it was convincing the group to cut a feature we’d already started building because it was pulling focus. That decision made the final demo stronger. It taught me that good engineering judgment isn’t just about what you build — it’s also about what you choose not to.",
   },
 ] as const;
 
-function formatPoint(text: string) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  return parts.map((chunk, i) =>
-    i % 2 === 1 ? (
-      <strong key={i} className="font-semibold text-foreground">
-        {chunk}
-      </strong>
-    ) : (
-      <span key={i}>{chunk}</span>
-    ),
-  );
-}
 
 export function ExperienceRoadmap() {
   return (
@@ -56,7 +48,7 @@ export function ExperienceRoadmap() {
     >
       <h2
         id="experience-heading"
-        className="text-xs font-semibold uppercase tracking-[0.25em] text-muted"
+        className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground"
       >
         My experience
       </h2>
@@ -102,31 +94,11 @@ export function ExperienceRoadmap() {
                     {m.org}
                   </p>
 
-                  <ul className="mt-4 space-y-3 text-[14px] leading-[1.65] text-muted sm:text-[15px] sm:leading-relaxed">
-                    {m.points.map((point, i) => (
-                      <li key={i} className="flex gap-3">
-                        <span
-                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50 dark:bg-accent/45"
-                          aria-hidden
-                        />
-                        <span>{formatPoint(point)}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {m.id === "assistiq" ? (
-                    <p className="mt-4 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2.5 text-[12px] text-muted sm:text-[13px]">
-                      <FlaskConical
-                        className="h-4 w-4 shrink-0 text-accent"
-                        strokeWidth={2}
-                        aria-hidden
-                      />
-                      <span>
-                        Focus areas: automated testing, integration coverage,
-                        and quality gates before release.
-                      </span>
+                  <div className="mt-4 rounded-xl border border-accent/20 bg-accent/5 px-4 py-3">
+                    <p className="text-[13.5px] leading-[1.7] text-muted sm:text-[14px]">
+                      {m.reflection}
                     </p>
-                  ) : null}
+                  </div>
                 </article>
               </div>
             </li>

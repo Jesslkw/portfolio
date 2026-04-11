@@ -4,28 +4,31 @@ const COMPETENCIES = [
   {
     title: "Critical thinking & problem-solving",
     icon: Brain,
-    why: "These skills are foundational to engineering and tied to how I grow when workload gets heavy. I’m working on reacting less and analyzing more—using logical reasoning, weighing alternatives, and justifying decisions—while keeping time management and structured analysis in sync so I can handle complexity more calmly.",
+    reflection:
+      "When my workload peaks, I notice a pattern: I stop thinking carefully and start reacting. Tasks pile up, decisions get rushed, and I end up spending energy on the wrong things. I chose this competency because I want to break that habit deliberately — not just manage it when things are calm. The goal isn't to think more; it's to think before I act, even under pressure.",
     goals: [
-      "By April 2026: use a weekly Sunday planning routine to break work into prioritized steps, block time for high-focus tasks, and avoid multitasking on those blocks.",
-      "By the end of April 2026: as a Support Analyst, independently troubleshoot and document cases that need root-cause analysis, and get supervisor feedback to sharpen depth and clarity.",
+      "Build a Sunday planning routine to break the week into prioritized steps and protect time blocks for focused work — no task-switching during those blocks.",
+      "At AssistIQ, take on root-cause analysis cases independently rather than escalating immediately, then ask for supervisor feedback to sharpen the depth and clarity of my reasoning.",
     ],
   },
   {
     title: "Communication",
     icon: MessageSquare,
-    why: "Technical skill only goes so far if ideas don’t land. Writing is a strength for me; I’m focusing on verbal confidence in professional settings—especially in rooms with more experienced people—so I can speak up and show initiative.",
+    reflection:
+      "Writing comes naturally to me — I can organize ideas clearly on paper. Speaking is different. In rooms with more experienced people, I often have a thought and let it pass rather than voicing it. I know that habit has a cost: it limits how much I contribute and how well others understand what I actually think. I want to fix that before it becomes permanent.",
     goals: [
-      "By April 2026: contribute at least once in every team or group discussion, and twice a month prep key points ahead of important conversations.",
-      "By April 2026: write ticket documentation with a clear problem summary, technical steps, and resolution; get quarterly supervisor feedback on clarity, tone, and structure and apply it going forward.",
+      "Commit to speaking up at least once in every team discussion, and prepare key points ahead of important conversations at least twice a month.",
+      "Write ticket documentation with a consistent structure — problem, steps taken, outcome — and get quarterly feedback from my supervisor on clarity and tone, then apply it.",
     ],
   },
   {
     title: "Collaboration & leadership",
     icon: UsersRound,
-    why: "Most engineering work is cross-functional. I do well solo, but I want stronger initiative in group settings. At my co-op, that means better coordination, clearer ownership of deliverables, and supporting the team’s outcomes.",
+    reflection:
+      "I work well on my own. That's both a strength and something I need to watch. Most engineering work eventually requires coordinating with other people across different roles, and being comfortable solo doesn't prepare you for that. My co-op is a good environment to push myself — the stakes are real but the margin for learning is there.",
     goals: [
-      "By April 2026: take on at least three extra responsibilities on my team with defined deliverables and deadlines, then reflect after each on leadership behaviors and what to improve.",
-      "By April 2026: hold one formal goal-setting conversation and two progress check-ins with my supervisor, document agreed actions, and track follow-through.",
+      "Volunteer for at least three responsibilities beyond my assigned scope, define clear deliverables for each, and reflect afterward on what leadership behaviors I demonstrated and what I'd do differently.",
+      "Have one formal goal-setting conversation with my supervisor and two follow-up check-ins, document the agreed actions, and track whether I actually follow through.",
     ],
   },
 ] as const;
@@ -39,17 +42,17 @@ export function SmartGoalsSection() {
     >
       <h2
         id="smart-goals-heading"
-        className="text-xs font-semibold uppercase tracking-[0.25em] text-muted"
+        className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground"
       >
-        Growth &amp; SMART goals
+        Growth & goals
       </h2>
-      <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
-        Highlights from my undergraduate competency work: three focus areas with
-        concrete goals through April 2026, including my role at AssistIQ.
+      <p className="mt-3 text-[15px] leading-relaxed text-muted">
+        Three areas I&apos;m actively developing — why each one matters to me,
+        and what I&apos;m doing about it.
       </p>
 
       <ul className="mt-8 space-y-6">
-        {COMPETENCIES.map(({ title, icon: Icon, why, goals }) => (
+        {COMPETENCIES.map(({ title, icon: Icon, reflection, goals }) => (
           <li key={title}>
             <article className="rounded-2xl border border-border bg-card p-4 shadow-sm shadow-slate-900/5 backdrop-blur-sm sm:p-5 dark:shadow-black/40">
               <div className="flex items-start gap-3">
@@ -61,12 +64,9 @@ export function SmartGoalsSection() {
                     {title}
                   </h3>
                   <p className="mt-2 text-[14px] leading-[1.65] text-muted sm:text-[15px] sm:leading-relaxed">
-                    {why}
+                    {reflection}
                   </p>
-                  <h4 className="mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-                    SMART goals
-                  </h4>
-                  <ul className="mt-2 space-y-2 text-[14px] leading-snug text-muted sm:text-[15px] sm:leading-relaxed">
+                  <ul className="mt-4 space-y-2 text-[14px] leading-[1.65] text-muted sm:text-[15px] sm:leading-relaxed">
                     {goals.map((g) => (
                       <li key={g} className="flex gap-2.5">
                         <span

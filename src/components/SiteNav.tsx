@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const LINKS = [
@@ -11,12 +11,54 @@ const LINKS = [
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#goals", label: "Goals" },
+  { href: "#goals", label: "Goals & Vision" },
+  { href: "#resume", label: "Résumé" },
   { href: "#connect", label: "Connect" },
 ] as const;
 
+// Maps section IDs to their nav href (vision shares the goals nav item)
+const SECTION_TO_NAV: Record<string, string> = {
+  top: "#top",
+  about: "#about",
+  scene: "#scene",
+  skills: "#skills",
+  experience: "#experience",
+  projects: "#projects",
+  goals: "#goals",
+  vision: "#goals",
+  resume: "#resume",
+  connect: "#connect",
+};
+
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#top");
+  const activeRef = useRef("#top");
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const navHref = SECTION_TO_NAV[entry.target.id];
+            if (navHref) {
+              activeRef.current = navHref;
+              setActiveHref(navHref);
+            }
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
+    );
+
+    Object.keys(SECTION_TO_NAV).forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -46,7 +88,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/80 bg-card/75 shadow-sm shadow-slate-900/5 backdrop-blur-md dark:bg-slate-950/70 dark:shadow-black/20 relative">
+    <header className="sticky top-0 z-40 w-full border-b border-border/80 bg-card/75 shadow-sm shadow-slate-900/5 backdrop-blur-md dark:bg-slate-950/70 dark:shadow-black/20">
       <div className="mx-auto flex h-14 max-w-3xl items-center justify-between gap-3 px-4 sm:px-5 md:px-8">
         <a
           href="#top"
@@ -60,15 +102,22 @@ export function SiteNav() {
           className="hidden items-center gap-1 md:flex"
           aria-label="Page sections"
         >
-          {LINKS.filter((l) => l.href !== "#top").map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-muted transition-colors hover:bg-accent/10 hover:text-foreground"
-            >
-              {label}
-            </a>
-          ))}
+          {LINKS.filter((l) => l.href !== "#top").map(({ href, label }) => {
+            const isActive = activeHref === href;
+            return (
+              <a
+                key={href}
+                href={href}
+                className={`whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-all duration-200 ${
+                  isActive
+                    ? "border border-accent/25 bg-white/70 text-accent shadow-sm backdrop-blur-sm dark:bg-white/10 dark:border-accent/30"
+                    : "text-muted hover:bg-accent/10 hover:text-foreground"
+                }`}
+              >
+                {label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
@@ -97,17 +146,24 @@ export function SiteNav() {
           aria-label="Page sections"
         >
           <ul className="flex flex-col gap-0.5">
-            {LINKS.map(({ href, label }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  className="block rounded-lg px-3 py-2.5 text-[15px] font-medium text-foreground transition-colors hover:bg-accent/10"
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            {LINKS.map(({ href, label }) => {
+              const isActive = activeHref === href;
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
+                      isActive
+                        ? "bg-accent/10 text-accent"
+                        : "text-foreground hover:bg-accent/10"
+                    }`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       ) : null}

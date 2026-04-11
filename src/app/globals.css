@@ -3,18 +3,18 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Light: ice blue (#f0f7ff family) + electric blue accent (#2563eb)
+  Light: warm off-white + soft gray-blue accent (#2563eb)
   Dark: near-black + deep blue + sky accent (#60a5fa)
 */
 :root {
-  --foreground: #0f172a;
-  --muted: #64748b;
+  --foreground: #1c2b3a;
+  --muted: #5f6f82;
   --accent: #2563eb;
   --accent-secondary: #6366f1;
-  --card: rgb(255 255 255 / 0.72);
+  --card: rgb(250 250 247 / 0.82);
   --border: rgb(15 23 42 / 0.1);
-  --veil: rgb(255 255 255 / 0.38);
-  --veil-fallback: rgb(248 250 252 / 0.92);
+  --veil: rgb(246 246 242 / 0.45);
+  --veil-fallback: rgb(243 244 240 / 0.94);
 }
 
 .dark {
@@ -108,15 +108,15 @@ body {
   background:
     radial-gradient(
       ellipse 130% 85% at 0% 0%,
-      rgb(191 219 254 / 0.85),
+      rgb(191 219 254 / 0.45),
       transparent 58%
     ),
     radial-gradient(
       ellipse 100% 75% at 100% 5%,
-      rgb(199 210 254 / 0.65),
+      rgb(199 210 254 / 0.35),
       transparent 52%
     ),
-    linear-gradient(168deg, #f8fafc 0%, #eef4ff 38%, #e0edfc 72%, #dbeafe 100%);
+    linear-gradient(168deg, #f4f4f0 0%, #ecedf4 38%, #e3e8f0 72%, #d8e4ee 100%);
 }
 
 .dark .dynamic-backdrop__base {
@@ -148,8 +148,8 @@ body {
   left: -16%;
   background: radial-gradient(
     circle at 42% 38%,
-    rgb(59 130 246 / 0.38),
-    rgb(147 197 253 / 0.2) 44%,
+    rgb(59 130 246 / 0.18),
+    rgb(147 197 253 / 0.09) 44%,
     transparent 68%
   );
   animation: backdrop-blob-a 24s ease-in-out infinite;
@@ -162,8 +162,8 @@ body {
   right: -14%;
   background: radial-gradient(
     circle at 50% 50%,
-    rgb(99 102 241 / 0.32),
-    rgb(165 180 252 / 0.16) 48%,
+    rgb(99 102 241 / 0.14),
+    rgb(165 180 252 / 0.07) 48%,
     transparent 70%
   );
   animation: backdrop-blob-b 30s ease-in-out infinite;
@@ -176,8 +176,8 @@ body {
   right: -6%;
   background: radial-gradient(
     circle at 48% 52%,
-    rgb(125 211 252 / 0.28),
-    rgb(224 242 254 / 0.14) 46%,
+    rgb(125 211 252 / 0.12),
+    rgb(224 242 254 / 0.06) 46%,
     transparent 66%
   );
   animation: backdrop-blob-c 19s ease-in-out infinite;
