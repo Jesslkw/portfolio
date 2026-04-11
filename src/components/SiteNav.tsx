@@ -57,7 +57,21 @@ export function SiteNav() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    // Fallback: highlight Connect when scrolled to the bottom
+    const onScroll = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 32;
+      if (atBottom) {
+        setActiveHref("#connect");
+        activeRef.current = "#connect";
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
